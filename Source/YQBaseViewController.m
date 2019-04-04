@@ -177,19 +177,19 @@
     _navLeftImage = navLeftImage;
     
     UIView *view = [[UIView alloc] init];
-    view.frame = CGRectMake(0, 0, 40, 40);
+    view.frame = CGRectMake(0, 0, 44, 44);
     view.backgroundColor = [UIColor clearColor];
-
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 40, 40);
-    button.imageEdgeInsets = UIEdgeInsetsMake(-5, -5, 0, 0);
+    button.frame = CGRectMake(-8, 0, 44, 44);
+    button.imageEdgeInsets = UIEdgeInsetsMake(-2, -6, 0, 0);
     //button.backgroundColor = [UIColor redColor];
     [button setImage:[UIImage imageNamed:navLeftImage] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(tapNavLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
     button.tag = 1;
-
+    
     [view addSubview:button];
-
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
