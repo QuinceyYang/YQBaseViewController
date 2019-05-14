@@ -30,7 +30,7 @@
     [super loadView];
     
     // 背景颜色
-    self.view.backgroundColor = [UIColor colorWithRed:239.0f/255 green:239.0f/255 blue:239.0f/255 alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1.0];
     //解决ScrollView自动下移20像素
     self.automaticallyAdjustsScrollViewInsets = NO;
     //支持右滑返回上一级
@@ -46,36 +46,14 @@
     // self
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //支持右滑返回上一级的代理
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationController.navigationBar.hidden = NO;
-    
-#if kAppUsageStatisticsEnable
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    params[@"deviceType"] = @"2";//iOS
-    params[@"channel"] = @"App Store";//
-    params[@"className"] =  NSStringFromClass([self class]);//
-    params[@"imei"] = [[UIDevice currentDevice] identifierForVendor].UUIDString;//
-    if (kAppDelegate.userLocation != nil && kAppDelegate.userLocation.location != nil) {
-        if (kAppDelegate.userLocation.location.coordinate.latitude != 0.0f && kAppDelegate.userLocation.location.coordinate.longitude != 0.0f) {
-            params[@"latitude"] = [NSString stringWithFormat:@"%.14f",kAppDelegate.userLocation.location.coordinate.latitude];//
-            params[@"longitude"] = [NSString stringWithFormat:@"%.14f",kAppDelegate.userLocation.location.coordinate.longitude];//
-        }
+    if (self.navigationController.navigationBarHidden == YES) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
-    NSLog(@"params = %@",params);
-    [HYBNetworking updateBaseUrl:kPWMNetworkServerUrl];
-    //__weak __typeof(self) weakSelf = self;
-    [HYBNetworking postWithUrl:@"appLog/saveAppLog.do" refreshCache:YES params:params success:^(id response) {
-        //code
-    } fail:^(NSError *error) {
-        //code
-    }];
-#endif
 }
-
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognize
 {

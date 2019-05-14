@@ -22,7 +22,6 @@
 @property (nonatomic, strong)UIColor  *titleColor;          ///<导航title颜色
 @property (nonatomic, strong)UIColor  *navBgColor;          ///<导航栏颜色
 @property (nonatomic, strong)UIColor  *navShadowColor;      ///<导航下面线的颜色
-@property (nonatomic, assign)BOOL     isSlidingReturn;      ///<是否开启侧滑返回功能（默认为YES）
 
 /**
  * 设置导航条Title颜色

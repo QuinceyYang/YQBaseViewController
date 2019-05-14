@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YQBaseViewController"
-  s.version      = "0.0.2"
+  s.version      = "1.0"
   s.summary      = "一个简单易用的基类ViewController."
 
   # This description is used to generate tags and improve search results.
