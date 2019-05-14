@@ -261,13 +261,6 @@
 
 }
 
-#pragma mark 是否支持右滑返回上一级
-- (void)setIsSlidingReturn:(BOOL)isSlidingReturn{
-    _isSlidingReturn = isSlidingReturn;
-    //是否支持右滑返回上一级
-    self.navigationController.interactivePopGestureRecognizer.enabled = isSlidingReturn;
-}
-
 #pragma mark 触摸事件
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
